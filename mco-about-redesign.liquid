@@ -200,23 +200,6 @@
 </section>
 
 <style>
-  /* ===== Enable page-level snap ONLY on this page by body class set in JS ===== */
-  body.mco-about-snap-enabled{
-    scroll-snap-type: y mandatory;
-    scroll-padding-top: 0px;
-  }
-  body.mco-about-snap-enabled .mco-about__screen{
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-  }
-
-  /* Disable snap on mobile & reduced motion */
-  @media (max-width: 900px){
-    body.mco-about-snap-enabled{ scroll-snap-type: none; }
-  }
-  @media (prefers-reduced-motion: reduce){
-    body.mco-about-snap-enabled{ scroll-snap-type: none; }
-  }
 
   #mco-about-{{ section.id }}{
     width: 100%;
@@ -308,6 +291,7 @@
     bottom: 60px;
     font-size: 34px;
     font-weight: 800;
+    font-family: Montserrat;
     color: #fff;
     text-shadow: 0 6px 18px rgba(0,0,0,.35);
     pointer-events: none;
@@ -318,6 +302,7 @@
     padding: 64px 56px;
     display: grid;
     align-content: center;
+    font-family: Montserrat; 
   }
 
   #mco-about-{{ section.id }} .mco-about__sectionLabel{
@@ -326,6 +311,7 @@
     gap: 6px;
     margin-bottom: 18px;
     width: fit-content;
+    font-family: Montserrat;
   }
 
   #mco-about-{{ section.id }} .mco-about__sectionLabelText{
@@ -333,6 +319,7 @@
     letter-spacing: .08em;
     text-transform: uppercase;
     font-weight: 600;
+    font-family: Montserrat;
   }
 
   #mco-about-{{ section.id }} .mco-about__sectionLabelUnderline{
@@ -345,6 +332,7 @@
     font-size: 15px;
     line-height: 1.7;
     max-width: 52ch;
+    font-family: Montserrat; 
   }
   #mco-about-{{ section.id }} .mco-about__copy--placeholder{
     opacity: .6;
@@ -361,6 +349,7 @@
   #mco-about-{{ section.id }} .mco-about__pinkCopy{
     color: #fff;
     font-size: 15px;
+    font-family: Montserrat;
     line-height: 1.7;
     max-width: 44ch;
   }
@@ -633,7 +622,7 @@
     { "type": "text", "id": "vvs_empty_title", "label": "Collapsed title", "default": "Explore" },
     { "type": "text", "id": "vvs_empty_subtitle", "label": "Collapsed subtitle", "default": "Select Vision, Values, or Sustainability to learn more." },
     { "type": "image_picker", "id": "vvs_collapsed_image", "label": "VVS collapsed image (shows before click)" },
-    { "type": "text", "id": "vvs_collapsed_image_alt", "label": "VVS collapsed image alt text", "default": "MCoBeauty" }
+    { "type": "text", "id": "vvs_collapsed_image_alt", "label": "VVS collapsed image alt text", "default": "MCoBeauty" },
 
 
     { "type": "range", "id": "strip_speed", "label": "Bottom strip speed (px/sec)", "min": 10, "max": 120, "step": 5, "default": 35 }
