@@ -1,120 +1,152 @@
+
 <section
   id="mco-about-{{ section.id }}"
   class="mco-about"
   data-mco-about
 >
-  <!-- TOP HERO TITLE ROW -->
-  <div class="mco-about__top">
-    <div class="mco-about__logoWrap">
-      {% if section.settings.brand_logo != blank %}
-        {{ section.settings.brand_logo | image_url: width: 1200 | image_tag: class: 'mco-about__logo', loading: 'eager', alt: section.settings.brand_logo_alt }}
-      {% else %}
-        <div class="mco-about__logoFallback">MCoBeauty.</div>
-      {% endif %}
-    </div>
+  <!-- Snap container (desktop) -->
+  <div class="mco-about__snap" data-mco-snap>
 
-    <div class="mco-about__taglineWrap">
-      <div class="mco-about__tagline">{{ section.settings.tagline }}</div>
-    </div>
-  </div>
-
-  <!-- PAGE 1 -->
-  <div class="mco-about__grid">
-
-    <div class="mco-about__cell mco-about__cell--aboutMedia">
-      {% if section.settings.about_image != blank %}
-        <div class="mco-about__aboutImageFrame">
-          {{ section.settings.about_image | image_url: width: 1600 | image_tag: class: 'mco-about__img', loading: 'lazy', alt: section.settings.about_image_alt }}
-          {% if section.settings.about_image_caption != blank %}
-            <div class="mco-about__aboutImageCaption">{{ section.settings.about_image_caption }}</div>
+    <!-- SCREEN 1 -->
+    <div class="mco-about__screen mco-about__screen--one" data-screen>
+      <!-- TOP HERO TITLE ROW -->
+      <div class="mco-about__top">
+        <div class="mco-about__logoWrap">
+          {% if section.settings.brand_logo != blank %}
+            {{ section.settings.brand_logo | image_url: width: 1400 | image_tag: class: 'mco-about__logo', loading: 'eager', alt: section.settings.brand_logo_alt }}
+          {% else %}
+            <div class="mco-about__logoFallback">MCoBeauty.</div>
           {% endif %}
         </div>
-      {% endif %}
-    </div>
 
-    <div class="mco-about__cell mco-about__cell--aboutText">
-      <div class="mco-about__sectionLabel">
-        <span class="mco-about__sectionLabelText">{{ section.settings.about_label }}</span>
-        <span class="mco-about__sectionLabelUnderline" aria-hidden="true"></span>
+        <div class="mco-about__taglineWrap">
+          <div class="mco-about__tagline">{{ section.settings.tagline }}</div>
+        </div>
       </div>
 
-      {% if section.settings.about_text != blank %}
-        <div class="mco-about__copy rte">{{ section.settings.about_text }}</div>
-      {% endif %}
-    </div>
-
-    <!-- PAGE 2 -->
-    <div class="mco-about__cell mco-about__cell--pink">
-      {% if section.settings.pink_text != blank %}
-        <div class="mco-about__pinkCopy rte">{{ section.settings.pink_text }}</div>
-      {% endif %}
-    </div>
-
-    <div class="mco-about__cell mco-about__cell--model">
-      {% if section.settings.model_image != blank %}
-        {{ section.settings.model_image | image_url: width: 1600 | image_tag: class: 'mco-about__img', loading: 'lazy', alt: section.settings.model_image_alt }}
-      {% endif %}
-    </div>
-
-    <!-- PAGE 3 -->
-    <div class="mco-about__cell mco-about__cell--vvsMedia">
-      <div class="mco-vvsMedia" data-vvs-media>
-        {% comment %} We render all images and show/hide via JS. {% endcomment %}
-        {% for block in section.blocks %}
-          {% if block.type == 'vvs_item' %}
-            <div class="mco-vvsMedia__item" data-vvs-image="{{ block.id }}" hidden>
-              {% if block.settings.image != blank %}
-                {{ block.settings.image | image_url: width: 1600 | image_tag: class: 'mco-about__img', loading: 'lazy', alt: block.settings.image_alt }}
+      <div class="mco-about__grid mco-about__grid--twoCol mco-about__grid--fill">
+        <div class="mco-about__cell mco-about__cell--aboutMedia">
+          {% if section.settings.about_image != blank %}
+            <div class="mco-about__aboutImageFrame">
+              {{ section.settings.about_image | image_url: width: 1800 | image_tag: class: 'mco-about__img mco-about__img--contain', loading: 'lazy', alt: section.settings.about_image_alt }}
+              {% if section.settings.about_image_caption != blank %}
+                <div class="mco-about__aboutImageCaption">{{ section.settings.about_image_caption }}</div>
               {% endif %}
             </div>
           {% endif %}
-        {% endfor %}
+        </div>
+
+        <div class="mco-about__cell mco-about__cell--aboutText">
+          <div class="mco-about__sectionLabel">
+            <span class="mco-about__sectionLabelText">{{ section.settings.about_label }}</span>
+            <span class="mco-about__sectionLabelUnderline" aria-hidden="true"></span>
+          </div>
+
+          {% if section.settings.about_text != blank %}
+            <div class="mco-about__copy rte">{{ section.settings.about_text }}</div>
+          {% endif %}
+        </div>
       </div>
     </div>
 
-    <div class="mco-about__cell mco-about__cell--vvsText">
-      <div class="mco-vvs" data-vvs>
-        <div class="mco-vvs__textArea" data-vvs-panels>
-          {% for block in section.blocks %}
-            {% if block.type == 'vvs_item' %}
-              <div class="mco-vvs__panel" data-vvs-panel="{{ block.id }}" hidden>
-                <h3 class="mco-vvs__heading">{{ block.settings.title }}</h3>
-                {% if block.settings.text != blank %}
-                  <div class="mco-about__copy rte">{{ block.settings.text }}</div>
+    <!-- SCREEN 2 -->
+    <div class="mco-about__screen mco-about__screen--two" data-screen>
+      <div class="mco-about__grid mco-about__grid--twoCol mco-about__grid--fill">
+        <div class="mco-about__cell mco-about__cell--pink">
+          {% if section.settings.pink_text != blank %}
+            <div class="mco-about__pinkCopy rte">{{ section.settings.pink_text }}</div>
+          {% endif %}
+        </div>
+
+        <div class="mco-about__cell mco-about__cell--model">
+          {% if section.settings.model_image != blank %}
+            {{ section.settings.model_image | image_url: width: 1800 | image_tag: class: 'mco-about__img', loading: 'lazy', alt: section.settings.model_image_alt }}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 3 -->
+    <div class="mco-about__screen mco-about__screen--three" data-screen>
+      <div class="mco-about__grid mco-about__grid--twoCol mco-about__grid--fill">
+        <div class="mco-about__cell mco-about__cell--vvsMedia">
+          <div class="mco-vvsMedia" data-vvs-media>
+            {% for block in section.blocks %}
+              {% if block.type == 'vvs_item' %}
+                <div class="mco-vvsMedia__item" data-vvs-image="{{ block.id }}" hidden>
+                  {% if block.settings.image != blank %}
+                    {{ block.settings.image | image_url: width: 1800 | image_tag: class: 'mco-about__img', loading: 'lazy', alt: block.settings.image_alt }}
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+
+            <!-- Optional: placeholder state when collapsed -->
+            <div class="mco-vvsMedia__empty" data-vvs-empty>
+              {% if section.settings.vvs_empty_title != blank %}
+                <div class="mco-vvsMedia__emptyTitle">{{ section.settings.vvs_empty_title }}</div>
+              {% endif %}
+              {% if section.settings.vvs_empty_subtitle != blank %}
+                <div class="mco-vvsMedia__emptySubtitle">{{ section.settings.vvs_empty_subtitle }}</div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <div class="mco-about__cell mco-about__cell--vvsText">
+          <div class="mco-vvs" data-vvs>
+            <div class="mco-vvs__textArea" data-vvs-panels>
+              {% for block in section.blocks %}
+                {% if block.type == 'vvs_item' %}
+                  <div class="mco-vvs__panel" data-vvs-panel="{{ block.id }}" hidden>
+                    <h3 class="mco-vvs__heading">{{ block.settings.title }}</h3>
+                    {% if block.settings.text != blank %}
+                      <div class="mco-about__copy rte">{{ block.settings.text }}</div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+
+              <!-- Empty (collapsed) state -->
+              <div class="mco-vvs__panel mco-vvs__panel--empty" data-vvs-panel-empty>
+                {% if section.settings.vvs_empty_title != blank %}
+                  <h3 class="mco-vvs__heading">{{ section.settings.vvs_empty_title }}</h3>
+                {% endif %}
+                {% if section.settings.vvs_empty_subtitle != blank %}
+                  <div class="mco-about__copy">{{ section.settings.vvs_empty_subtitle }}</div>
                 {% endif %}
               </div>
-            {% endif %}
-          {% endfor %}
-        </div>
+            </div>
 
-        <div class="mco-vvs__nav" role="tablist" aria-label="Vision Values Sustainability">
-          {% for block in section.blocks %}
-            {% if block.type == 'vvs_item' %}
-              <button
-                class="mco-vvs__btn"
-                type="button"
-                role="tab"
-                aria-selected="false"
-                data-vvs-btn="{{ block.id }}"
-              >
-                <span class="mco-vvs__btnText">{{ block.settings.nav_label }}</span>
-                <span class="mco-vvs__btnLine" aria-hidden="true"></span>
-              </button>
-            {% endif %}
-          {% endfor %}
-        </div>
+            <div class="mco-vvs__nav" role="tablist" aria-label="Vision Values Sustainability">
+              {% for block in section.blocks %}
+                {% if block.type == 'vvs_item' %}
+                  <button
+                    class="mco-vvs__btn"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    data-vvs-btn="{{ block.id }}"
+                  >
+                    <span class="mco-vvs__btnText">{{ block.settings.nav_label }}</span>
+                    <span class="mco-vvs__btnLine" aria-hidden="true"></span>
+                  </button>
+                {% endif %}
+              {% endfor %}
+            </div>
 
-        {% if section.settings.vvs_hint != blank %}
-          <div class="mco-vvs__hint">{{ section.settings.vvs_hint }}</div>
-        {% endif %}
+            {% if section.settings.vvs_hint != blank %}
+              <div class="mco-vvs__hint">{{ section.settings.vvs_hint }}</div>
+            {% endif %}
+          </div>
+        </div>
       </div>
     </div>
 
-  </div>
+  </div><!-- /snap -->
 
-  <!-- AUTOSCROLL CAROUSEL -->
-  <div class="mco-strip" data-mco-strip
-       data-speed="{{ section.settings.strip_speed | default: 35 }}">
+  <!-- CAROUSEL AUTOSCROLL -->
+  <div class="mco-strip" data-mco-strip data-speed="{{ section.settings.strip_speed | default: 35 }}">
     <div class="mco-strip__viewport">
       <div class="mco-strip__track" data-strip-track>
         {% for block in section.blocks %}
@@ -122,7 +154,7 @@
             {% when 'strip_image' %}
               <div class="mco-strip__tile" {{ block.shopify_attributes }}>
                 {% if block.settings.image != blank %}
-                  {{ block.settings.image | image_url: width: 1200 | image_tag: class: 'mco-strip__media', loading: 'lazy', alt: block.settings.alt }}
+                  {{ block.settings.image | image_url: width: 1400 | image_tag: class: 'mco-strip__media', loading: 'lazy', alt: block.settings.alt }}
                 {% endif %}
               </div>
 
@@ -155,7 +187,37 @@
     background: #fff;
   }
 
-  /* TOP TITLE ROW */
+  /* ===== Scroll snap container (desktop) ===== */
+  #mco-about-{{ section.id }} .mco-about__snap{
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+
+  #mco-about-{{ section.id }} .mco-about__screen{
+    min-height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background: #fff;
+  }
+
+  /* Turn off snap container on mobile so it behaves normally */
+  @media (max-width: 900px){
+    #mco-about-{{ section.id }} .mco-about__snap{
+      scroll-snap-type: none;
+      overflow: visible;
+      max-height: none;
+    }
+    #mco-about-{{ section.id }} .mco-about__screen{
+      min-height: auto;
+      scroll-snap-align: none;
+      display: block;
+    }
+  }
+
+  /* ===== Top row ===== */
   #mco-about-{{ section.id }} .mco-about__top{
     display: grid;
     grid-template-columns: 1.4fr 1fr;
@@ -185,22 +247,34 @@
     text-align: left;
   }
 
-  /* GRID */
+  @media (max-width: 1000px){
+    #mco-about-{{ section.id }} .mco-about__top{
+      grid-template-columns: 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 28px 20px 10px;
+    }
+    #mco-about-{{ section.id }} .mco-about__tagline{
+      font-size: 34px;
+    }
+  }
+
+  /* ===== Two-column grids per screen ===== */
   #mco-about-{{ section.id }} .mco-about__grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border-top: 1px solid rgba(0,0,0,.18);
+    gap: 0;
+  }
+
+  #mco-about-{{ section.id }} .mco-about__grid--fill{
+    height: 100%;
   }
 
   #mco-about-{{ section.id }} .mco-about__cell{
-    min-height: 420px;
-    border-right: 1px solid rgba(0,0,0,.18);
-    border-bottom: 1px solid rgba(0,0,0,.18);
+    border: 0;
     overflow: hidden;
     background: #fff;
-  }
-  #mco-about-{{ section.id }} .mco-about__cell:nth-child(2n){
-    border-right: 0;
+    min-height: 100%;
   }
 
   #mco-about-{{ section.id }} .mco-about__img{
@@ -210,10 +284,15 @@
     display: block;
   }
 
-  /* ABOUT IMAGE FRAME */
+  /* About image uses a contained framed look */
+  #mco-about-{{ section.id }} .mco-about__img--contain{
+    height: auto;
+    object-fit: contain;
+  }
+
   #mco-about-{{ section.id }} .mco-about__aboutImageFrame{
     height: 100%;
-    padding: 44px 44px 44px;
+    padding: 44px;
     box-sizing: border-box;
     display: grid;
     place-items: center;
@@ -221,7 +300,7 @@
 
   #mco-about-{{ section.id }} .mco-about__aboutImageFrame img{
     width: 100%;
-    max-width: 520px;
+    max-width: 560px;
     height: auto;
     box-shadow: 0 10px 28px rgba(0,0,0,.14);
     background: #fff;
@@ -234,9 +313,10 @@
     font-weight: 700;
   }
 
-  /* ABOUT TEXT */
   #mco-about-{{ section.id }} .mco-about__cell--aboutText{
     padding: 64px 56px;
+    display: grid;
+    align-content: center;
   }
 
   #mco-about-{{ section.id }} .mco-about__sectionLabel{
@@ -244,6 +324,7 @@
     flex-direction: column;
     gap: 6px;
     margin-bottom: 18px;
+    width: fit-content;
   }
 
   #mco-about-{{ section.id }} .mco-about__sectionLabelText{
@@ -256,7 +337,7 @@
   #mco-about-{{ section.id }} .mco-about__sectionLabelUnderline{
     width: 44px;
     height: 3px;
-    background: #e24b63; 
+    background: #f7aec4;
   }
 
   #mco-about-{{ section.id }} .mco-about__copy{
@@ -265,7 +346,7 @@
     max-width: 52ch;
   }
 
-  /* PAGE 2 */
+  /* Screen 2 */
   #mco-about-{{ section.id }} .mco-about__cell--pink{
     background: {{ section.settings.pink_bg }};
     padding: 60px 56px;
@@ -280,9 +361,11 @@
     max-width: 44ch;
   }
 
-  /* PAGE 3 */
+  /* Screen 3 - VVS */
   #mco-about-{{ section.id }} .mco-about__cell--vvsText{
     padding: 56px;
+    display: grid;
+    align-content: center;
   }
 
   #mco-about-{{ section.id }} .mco-vvs__heading{
@@ -292,6 +375,10 @@
     text-transform: uppercase;
     font-size: 26px;
     margin: 0 0 12px;
+  }
+
+  #mco-about-{{ section.id }} .mco-vvs__panel--empty{
+    opacity: .8;
   }
 
   #mco-about-{{ section.id }} .mco-vvs__nav{
@@ -340,9 +427,42 @@
     text-align: center;
   }
 
-  /* CAROUSEL */
+  #mco-about-{{ section.id }} .mco-vvsMedia{
+    height: 100%;
+    position: relative;
+    background: #fff;
+  }
+
+  #mco-about-{{ section.id }} .mco-vvsMedia__item,
+  #mco-about-{{ section.id }} .mco-vvsMedia__empty{
+    height: 100%;
+  }
+
+  #mco-about-{{ section.id }} .mco-vvsMedia__empty{
+    display: grid;
+    place-items: center;
+    padding: 28px;
+    text-align: center;
+    color: rgba(0,0,0,.55);
+  }
+
+  #mco-about-{{ section.id }} .mco-vvsMedia__emptyTitle{
+    font-family: Montserrat, sans-serif;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  #mco-about-{{ section.id }} .mco-vvsMedia__emptySubtitle{
+    font-size: 14px;
+    max-width: 42ch;
+    margin: 0 auto;
+  }
+
+  /* ===== Bottom strip ===== */
   #mco-about-{{ section.id }} .mco-strip{
-    border-top: 1px solid rgba(0,0,0,.18);
+    border-top: 0;
     background: #fff;
     overflow: hidden;
   }
@@ -360,11 +480,10 @@
 
   #mco-about-{{ section.id }} .mco-strip__tile{
     flex: 0 0 auto;
-    width: 25vw;        
+    width: 25vw;
     max-width: 420px;
     min-width: 260px;
     height: 220px;
-    border-right: 1px solid rgba(0,0,0,.18);
     overflow: hidden;
     background: #000;
   }
@@ -377,40 +496,40 @@
     background: #000;
   }
 
-  /* Responsive */
-  @media (max-width: 1000px){
-    #mco-about-{{ section.id }} .mco-about__top{
-      grid-template-columns: 1fr;
-      gap: 12px;
-      align-items: start;
-    }
-    #mco-about-{{ section.id }} .mco-about__tagline{
-      font-size: 34px;
-    }
-  }
-
   @media (max-width: 900px){
     #mco-about-{{ section.id }} .mco-about__grid{
       grid-template-columns: 1fr;
     }
+
     #mco-about-{{ section.id }} .mco-about__cell{
-      border-right: 0;
       min-height: auto;
     }
+
     #mco-about-{{ section.id }} .mco-about__cell--aboutText,
     #mco-about-{{ section.id }} .mco-about__cell--pink,
     #mco-about-{{ section.id }} .mco-about__cell--vvsText{
       padding: 34px 22px;
     }
+
+    #mco-about-{{ section.id }} .mco-about__aboutImageFrame{
+      padding: 26px 22px;
+    }
+
     #mco-about-{{ section.id }} .mco-strip__tile{
       width: 70vw;
       max-width: none;
+      height: 220px;
     }
   }
 
   @media (prefers-reduced-motion: reduce){
     #mco-about-{{ section.id }} .mco-strip__track{
       transform: none !important;
+    }
+    #mco-about-{{ section.id }} .mco-about__snap{
+      scroll-snap-type: none;
+      overflow: visible;
+      max-height: none;
     }
   }
 </style>
@@ -420,7 +539,7 @@
     const root = document.getElementById("mco-about-{{ section.id }}");
     if (!root) return;
 
-    /* ========== menu click behavior (collapsed by default) ========== */
+    /* ========= VVS click behavior (collapsed by default) ========= */
     const vvs = root.querySelector('[data-vvs]');
     const panelsWrap = root.querySelector('[data-vvs-panels]');
     const mediaWrap = root.querySelector('[data-vvs-media]');
@@ -428,25 +547,26 @@
       const btns = Array.from(vvs.querySelectorAll('[data-vvs-btn]'));
       const panels = Array.from(panelsWrap.querySelectorAll('[data-vvs-panel]'));
       const images = Array.from(mediaWrap.querySelectorAll('[data-vvs-image]'));
+      const emptyPanel = panelsWrap.querySelector('[data-vvs-panel-empty]');
+      const emptyMedia = mediaWrap.querySelector('[data-vvs-empty]');
 
       function collapseAll(){
         btns.forEach(b => b.setAttribute('aria-selected', 'false'));
         panels.forEach(p => p.hidden = true);
         images.forEach(i => i.hidden = true);
+        if (emptyPanel) emptyPanel.hidden = false;
+        if (emptyMedia) emptyMedia.hidden = false;
       }
 
       function open(id){
-        collapseAll();
-        const btn = btns.find(b => b.dataset.vvsBtn === id);
-        const panel = panels.find(p => p.dataset.vvsPanel === id);
-        const img = images.find(i => i.dataset.vvsImage === id);
-
-        if (btn) btn.setAttribute('aria-selected', 'true');
-        if (panel) panel.hidden = false;
-        if (img) img.hidden = false;
+        btns.forEach(b => b.setAttribute('aria-selected', b.dataset.vvsBtn === id ? 'true' : 'false'));
+        panels.forEach(p => p.hidden = (p.dataset.vvsPanel !== id));
+        images.forEach(i => i.hidden = (i.dataset.vvsImage !== id));
+        if (emptyPanel) emptyPanel.hidden = true;
+        if (emptyMedia) emptyMedia.hidden = true;
       }
 
-      // Start collapsed 
+      // Start collapsed
       collapseAll();
 
       // Click = toggle
@@ -454,16 +574,13 @@
         b.addEventListener('click', () => {
           const id = b.dataset.vvsBtn;
           const isOpen = b.getAttribute('aria-selected') === 'true';
-          if (isOpen) {
-            collapseAll();
-          } else {
-            open(id);
-          }
+          if (isOpen) collapseAll();
+          else open(id);
         });
       });
     }
 
-    /* ========== Carousel auto-scroll ========== */
+    /* ========= Bottom strip auto-scroll ========= */
     const strip = root.querySelector('[data-mco-strip]');
     if (strip && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const track = strip.querySelector('[data-strip-track]');
@@ -474,11 +591,9 @@
       let last = null;
       let x = 0;
 
-      // Duplicate track contents for seamless loop
       const originalHTML = track.innerHTML;
       track.innerHTML = originalHTML + originalHTML;
 
-      // Pause on hover
       let paused = false;
       strip.addEventListener('mouseenter', () => paused = true);
       strip.addEventListener('mouseleave', () => paused = false);
@@ -494,7 +609,6 @@
           if (Math.abs(x) >= halfWidth) x = 0;
           track.style.transform = `translateX(${x}px)`;
         }
-
         raf = requestAnimationFrame(step);
       }
 
@@ -526,6 +640,9 @@
     { "type": "text", "id": "model_image_alt", "label": "Model image alt text", "default": "MCoBeauty model" },
 
     { "type": "text", "id": "vvs_hint", "label": "Hint text (optional)", "default": "Click to learn more" },
+
+    { "type": "text", "id": "vvs_empty_title", "label": "VVS collapsed title", "default": "Explore" },
+    { "type": "text", "id": "vvs_empty_subtitle", "label": "VVS collapsed subtitle", "default": "Select Vision, Values, or Sustainability to learn more." },
 
     { "type": "range", "id": "strip_speed", "label": "Bottom strip speed (px/sec)", "min": 10, "max": 120, "step": 5, "default": 35 }
   ],
@@ -566,4 +683,5 @@
   ]
 }
 {% endschema %}
+
 
