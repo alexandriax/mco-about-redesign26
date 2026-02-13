@@ -61,7 +61,7 @@
           <div class="mco-about__pinkCopy rte">{{ section.settings.pink_text }}</div>
         {% else %}
           <div class="mco-about__pinkCopy mco-about__copy--placeholder" style="color:#fff;">
-            Add your pink-section copy in settings.
+            Add pink-section copy in settings.
           </div>
         {% endif %}
       </div>
@@ -339,7 +339,7 @@
   }
 
   #mco-about-{{ section.id }} .mco-about__copy{
-    font-size: 24px;
+    font-size: 18px;
     line-height: 1.7;
     max-width: 52ch;
     font-family: Montserrat; 
@@ -351,14 +351,14 @@
   /* Pink screen */
   #mco-about-{{ section.id }} .mco-about__cell--pink{
     background: {{ section.settings.pink_bg }};
-    padding: 60px 56px;
+    padding-left: 50px;
     display: grid;
     align-items: center;
   }
 
   #mco-about-{{ section.id }} .mco-about__pinkCopy{
     color: #fff;
-    font-size: 24px;
+    font-size: 18px;
     font-family: Montserrat;
     line-height: 1.7;
     max-width: 44ch;
@@ -392,6 +392,8 @@
     margin: 0 auto;
     display: grid;
     gap: 14px;
+    justify-content: center;
+    padding-top: 100px;
   }
 
   #mco-about-{{ section.id }} .mco-vvs__panelInner{
@@ -413,7 +415,7 @@
     font-weight: 400;
     letter-spacing: .12em;
     text-transform: uppercase;
-    font-size: 48px;
+    font-size: 38px;
     display: block;
     text-align: center;
     color: rgba(0,0,0,.88);
