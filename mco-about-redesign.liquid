@@ -80,6 +80,8 @@
 
   <!-- SCREEN 3 -->
   <div class="mco-about__screen mco-about__screen--three" data-mco-screen>
+
+    <!-- 2-column VVS row -->
     <div class="mco-about__grid mco-about__grid--twoCol">
       <div class="mco-about__cell mco-about__cell--vvsMedia">
         <div class="mco-vvsMedia" data-vvs-media>
@@ -97,99 +99,100 @@
             {% endif %}
           {% endfor %}
 
-          <!-- Collapsed state (shown until click) -->
           <div class="mco-vvsMedia__empty" data-vvs-empty>
-             {% if section.settings.vvs_collapsed_image != blank %}
-             {{ section.settings.vvs_collapsed_image | image_url: width: 2000 | image_tag: class: 'mco-about__img', loading: 'lazy', alt: section.settings.vvs_collapsed_image_alt }}
-             {% else %}
-             <div class="mco-about__placeholder mco-about__placeholder--image">
-                 <span>Upload “VVS collapsed image”</span>
-             </div>
-             {% endif %}
-           </div>
+            {% if section.settings.vvs_collapsed_image != blank %}
+              {{ section.settings.vvs_collapsed_image | image_url: width: 2000 | image_tag: class: 'mco-about__img', loading: 'lazy', alt: section.settings.vvs_collapsed_image_alt }}
+            {% else %}
+              <div class="mco-about__placeholder mco-about__placeholder--image">
+                <span>Upload “VVS collapsed image”</span>
+              </div>
+            {% endif %}
+          </div>
         </div>
-     </div>
+      </div>
 
-    <div class="mco-about__cell mco-about__cell--vvsText">
+      <div class="mco-about__cell mco-about__cell--vvsText">
         <div class="mco-vvs" data-vvs>
-            <div class="mco-vvs__list" data-vvs-list>
-             {% for block in section.blocks %}
-             {% if block.type == 'vvs_item' %}
+          <div class="mco-vvs__list" data-vvs-list>
+            {% for block in section.blocks %}
+              {% if block.type == 'vvs_item' %}
                 <div class="mco-vvs__item" data-vvs-item="{{ block.id }}" {{ block.shopify_attributes }}>
-                <button
+                  <button
                     class="mco-vvs__btn"
                     type="button"
                     aria-expanded="false"
                     data-vvs-btn="{{ block.id }}"
-                >
+                  >
                     <span class="mco-vvs__btnText">{{ block.settings.nav_label }}</span>
                     <span class="mco-vvs__btnLine" aria-hidden="true"></span>
-                </button>
+                  </button>
 
-            <div class="mco-vvs__panel" data-vvs-panel="{{ block.id }}" hidden>
-              <div class="mco-vvs__panelInner">
-                <div class="mco-vvs__body rte">
-                  {% if block.settings.text != blank %}
-                    {{ block.settings.text }}
-                  {% else %}
-                    <div class="mco-about__copy mco-about__copy--placeholder">
-                      Add copy for {{ block.settings.nav_label }} in this block.
+                  <div class="mco-vvs__panel" data-vvs-panel="{{ block.id }}" hidden>
+                    <div class="mco-vvs__panelInner">
+                      <div class="mco-vvs__body rte">
+                        {% if block.settings.text != blank %}
+                          {{ block.settings.text }}
+                        {% else %}
+                          <div class="mco-about__copy mco-about__copy--placeholder">
+                            Add copy for {{ block.settings.nav_label }} in this block.
+                          </div>
+                        {% endif %}
+                      </div>
                     </div>
-                  {% endif %}
+                  </div>
                 </div>
-              </div>
-            </div>
+              {% endif %}
+            {% endfor %}
           </div>
-        {% endif %}
-      {% endfor %}
-    </div>
 
-    {% if section.settings.vvs_hint != blank %}
-      <div class="mco-vvs__hint">{{ section.settings.vvs_hint }}</div>
-    {% endif %}
-    </div>
-    </div>
-
-      <!-- AUTOSCROLL STRIP -->
-  <div class="mco-strip" data-mco-strip data-speed="{{ section.settings.strip_speed | default: 35 }}">
-    <div class="mco-strip__viewport">
-      <div class="mco-strip__track" data-strip-track>
-        {% for block in section.blocks %}
-          {% case block.type %}
-            {% when 'strip_image' %}
-              <div class="mco-strip__tile" {{ block.shopify_attributes }}>
-                {% if block.settings.image != blank %}
-                  {{ block.settings.image | image_url: width: 1600 | image_tag: class: 'mco-strip__media', loading: 'lazy', alt: block.settings.alt }}
-                {% else %}
-                  <div class="mco-about__placeholder mco-about__placeholder--strip"><span>Strip image</span></div>
-                {% endif %}
-              </div>
-
-            {% when 'strip_video' %}
-              <div class="mco-strip__tile" {{ block.shopify_attributes }}>
-                {% if block.settings.video != blank %}
-                  {{
-                    block.settings.video
-                    | video_tag:
-                      class: 'mco-strip__media',
-                      muted: true,
-                      playsinline: true,
-                      loop: block.settings.loop,
-                      autoplay: block.settings.autoplay_video,
-                      controls: block.settings.show_controls,
-                      preload: 'metadata'
-                  }}
-                {% else %}
-                  <div class="mco-about__placeholder mco-about__placeholder--strip"><span>Strip video</span></div>
-                {% endif %}
-              </div>
-          {% endcase %}
-        {% endfor %}
+          {% if section.settings.vvs_hint != blank %}
+            <div class="mco-vvs__hint">{{ section.settings.vvs_hint }}</div>
+          {% endif %}
+        </div>
       </div>
     </div>
+
+    <!-- AUTOSCROLL STRIP (spans full width) -->
+    <div class="mco-strip" data-mco-strip data-speed="{{ section.settings.strip_speed | default: 35 }}">
+      <div class="mco-strip__viewport">
+        <div class="mco-strip__track" data-strip-track>
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'strip_image' %}
+                <div class="mco-strip__tile" {{ block.shopify_attributes }}>
+                  {% if block.settings.image != blank %}
+                    {{ block.settings.image | image_url: width: 1600 | image_tag: class: 'mco-strip__media', loading: 'lazy', alt: block.settings.alt }}
+                  {% else %}
+                    <div class="mco-about__placeholder mco-about__placeholder--strip"><span>Strip image</span></div>
+                  {% endif %}
+                </div>
+
+              {% when 'strip_video' %}
+                <div class="mco-strip__tile" {{ block.shopify_attributes }}>
+                  {% if block.settings.video != blank %}
+                    {{
+                      block.settings.video
+                      | video_tag:
+                        class: 'mco-strip__media',
+                        muted: true,
+                        playsinline: true,
+                        loop: block.settings.loop,
+                        autoplay: block.settings.autoplay_video,
+                        controls: block.settings.show_controls,
+                        preload: 'metadata'
+                    }}
+                  {% else %}
+                    <div class="mco-about__placeholder mco-about__placeholder--strip"><span>Strip video</span></div>
+                  {% endif %}
+                </div>
+            {% endcase %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
   </div>
- </div>
- </div>
+
 </section>
 
 <style>
@@ -221,6 +224,10 @@
   #mco-about-{{ section.id }} .mco-about__cell--vvsText{
     height: 100%;
   }
+  #mco-about-{{ section.id }} .mco-about__screen--three .mco-strip{
+    width: 100%;
+  }
+
 
   #mco-about-{{ section.id }} .mco-vvsMedia,
   #mco-about-{{ section.id }} .mco-vvsMedia__item,
