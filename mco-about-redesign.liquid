@@ -147,12 +147,10 @@
     {% if section.settings.vvs_hint != blank %}
       <div class="mco-vvs__hint">{{ section.settings.vvs_hint }}</div>
     {% endif %}
-        </div>
     </div>
     </div>
-  </div>
 
-  <!-- AUTOSCROLL STRIP -->
+      <!-- AUTOSCROLL STRIP -->
   <div class="mco-strip" data-mco-strip data-speed="{{ section.settings.strip_speed | default: 35 }}">
     <div class="mco-strip__viewport">
       <div class="mco-strip__track" data-strip-track>
@@ -190,6 +188,8 @@
       </div>
     </div>
   </div>
+ </div>
+ </div>
 </section>
 
 <style>
@@ -206,6 +206,11 @@
     display: grid;
     grid-template-rows: auto 1fr;
   }
+
+  #mco-about-{{ section.id }} .mco-about__screen--three{
+    grid-template-rows: 1fr auto;
+  }
+
 
   /* TEST Screen 3 rules */
   #mco-about-{{ section.id }} .mco-about__screen--three .mco-about__grid{
@@ -356,7 +361,6 @@
   #mco-about-{{ section.id }} .mco-about__cell--vvsText{
     padding: 56px;
     display: grid;
-    align-content: center;
   }
 
   #mco-about-{{ section.id }} .mco-vvs__heading{
@@ -458,6 +462,7 @@
   #mco-about-{{ section.id }} .mco-strip{
     background: #fff;
     overflow: hidden;
+    
   }
   #mco-about-{{ section.id }} .mco-strip__viewport{ width: 100%; overflow: hidden; }
   #mco-about-{{ section.id }} .mco-strip__track{ display: flex; gap: 0; will-change: transform; }
